@@ -21,7 +21,7 @@
 	
 
 </head>
-<body>
+<body style="background-image: linear-gradient(to right top, #f0e5da, #fddeb1, #ffd987, #fad759, #ebd812); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
   
        <!--  Navbar -->
 

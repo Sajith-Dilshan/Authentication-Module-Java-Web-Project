@@ -1,5 +1,24 @@
+<%@page import="com.entites.User" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+
+<%
+User user = (User)session.getAttribute("user-ob");
+
+ if(user==null)
+ {
+	 session.setAttribute("login-msg","Please Login First...");
+	 response.sendRedirect("home.jsp");
+ }
+
+
+%>
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,77 +76,52 @@
 	<!-- End Navbar -->
 
 
+	<div class="contianer">
 
-	<div class="continer-fluid div-color">
+		<div class="row d-flex justify-content-center align-items-center mt-4">
 
-		<div class="row">
+			<div class="col-md-6">
 
-			<div class="col-md-4 offset-md-4">
+				<div class="card">
 
-				<div class="card mt-3">
+					<%					
+					User user1 = (User)session.getAttribute("user-ob");
+					%>
+					
+					
+					
+					
+					
+					<% if(user!=null)
+					{
+						
+						
+					
+					  
+					
+					%>
 
-					<div class="card-header text-center c-head text-white ">
-						<i class="fa fa-user-circle fa-3x" aria-hidden="true"></i>
-						<h4>Registration</h4>
+
+
+
+					<div class="card-body">
+
+						<h1>Name:<%=user1.getName() %></h1>
+						<h1>Email:<%=user1.getEmail()  %></h1>
+
+
+						<div class="continer text-center">
+
+							<a class="btn btn-primary btn-lg text-white" href="logoutServlet">Logout</a>
+
+						</div>
+
 
 					</div>
 					
-					
-					
-					
-
-
-				<div class="card-body">
-
-					<form action="registerServlet" method="post">
-
-						<div class="form-group">
-							<label for="exampleInputEmail1">Full Name</label> <input
-								type="text" class="form-control" id="exampleInputEmail1"
-								placeholder="Enter Full Name" name="uname">
-
-						</div>
-
-
-
-						<div class="form-group">
-							<label for="exampleInputEmail1">Email address</label> <input
-								type="email" class="form-control" id="exampleInputEmail1"
-								aria-describedby="emailHelp" placeholder="Enter email"
-								name="email">
-
-						</div>
-						<div class="form-group">
-							<label for="exampleInputPassword1">Password</label> <input
-								type="password" class="form-control" id="exampleInputPassword1"
-								placeholder="Password" name="password">
-						</div>
-
-						<button type="submit" class="btn btn-primary badge-pill btn-block">Register</button>
-					</form>
-					
-					<div class="card-footer text-muted">
-   <%
-					    String regMsg=(String)session.getAttribute("reg-msg");
-					
-					   if (regMsg != null)
-					   {%>
+					<%} %>
 
 				</div>
-				
-                <div class="alert alert-success" role="alert"><%= regMsg %>Login..<a href="login.jsp">click here</a></div>
-				<% 
-				session.removeAttribute("reg-msg");
-					   }
-					   
-					   %>
-  </div>
-
-
-				</div>
-				
-
-
 
 
 			</div>
@@ -135,26 +129,7 @@
 		</div>
 
 
-
-
 	</div>
-
-
-	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </body>
